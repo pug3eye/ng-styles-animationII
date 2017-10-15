@@ -28,12 +28,26 @@ import {animate, state, style, transition, trigger} from '@angular/animations';
       transition('clicked => default', animate(300)),
       transition('mousedown <=> clicked', animate(300)),
       // transition('clicked => mousedown', animate(300))
+    ]),
+    trigger('numberEnteredState', [
+      state('unselected', style({
+        border: '1px solid black',
+        padding: '5px'
+      })),
+      state('selected', style({
+        border: '2px solid blue',
+        padding: '4px',
+        backgroundColor: 'lightblue'
+      })),
+      transition('unselected => selected', animate(300))
     ])
   ]
 })
 export class AppComponent {
   // title = 'app';
   clickInfo = 'default';
+  paragraphClick = 'default';
+  numberEntered;
 
   onClickSimple() {
    this.clickInfo = 'clicked';
